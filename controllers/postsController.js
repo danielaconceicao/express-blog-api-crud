@@ -9,6 +9,20 @@ const index = (req, res) =>{
     });
 };
 
+const show = (req, res) => {
+    const post = posts.find(postEl => postEl.slug.toLowerCase() === req.params.slug);
+
+    if(!post){
+        return res.status(404).json({
+            error: 'Not found'
+        })
+    }
+
+    return res.status(200).json({
+        data: post
+    })
+}
+
 
 const store = (req, res) => {
     const post = {
@@ -33,5 +47,6 @@ const store = (req, res) => {
 
 module.exports = {
     store, 
-    index
+    index,
+    show
 }
