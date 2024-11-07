@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
-const postsRouter = require('../express-blog-api-crud/router/posts')
+const postsRouter = require('../express-blog-api-crud/router/posts');
+const notFoundMiddleware = require('./middleware/notfound');
+const handleMiddleware = require('./middleware/serverError');
 app.use(express.json());
 
 const HOST = 'http://localhost'
@@ -15,3 +17,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/posts', postsRouter);
+
+app.use(notFoundMiddleware);
+
+app.use(handleMiddleware);
+  
