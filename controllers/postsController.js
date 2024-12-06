@@ -4,8 +4,7 @@ const fs = require('fs');
 
 const index = (req, res) =>{
     res.json({
-        data: posts,
-        counter: posts.length
+        data: posts
     });
 };
 
