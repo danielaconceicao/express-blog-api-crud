@@ -2,11 +2,6 @@ const posts = require('../database/db.js');
 const fs = require('fs');
 
 
-const index = (req, res) =>{
-    res.json({
-        data: posts
-    });
-};
 
 const show = (req, res) => {
     const post = posts.find(postEl => postEl.id === Number(req.params.id));
