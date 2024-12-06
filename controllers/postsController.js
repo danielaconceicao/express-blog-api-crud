@@ -10,7 +10,7 @@ const index = (req, res) =>{
 };
 
 const show = (req, res) => {
-    const post = posts.find(postEl => postEl.slug.toLowerCase() === req.params.slug);
+    const post = posts.find(postEl => postEl.id === Number(req.params.id));
 
     if(!post){
         return res.status(404).json({
@@ -26,6 +26,7 @@ const show = (req, res) => {
 
 const store = (req, res) => {
     const post = {
+        
         title: req.body.title,
         slug: req.body.slug,
         content: req.body.content,
